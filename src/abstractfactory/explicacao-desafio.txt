@@ -1,0 +1,37 @@
+Desenvolver um sistema para criar diferentes tipos de labirintos para um jogo de aventura. Cada labirinto pode ser "Clássico" (com salas e portas normais)
+ ou "Encantado" (com salas mágicas e portas que requerem feitiços).
+ O sistema deve ser flexível para adicionar novos tipos de labirintos no futuro sem alterar o código principal.
+
+
+
+ 4. Vantagens e Desvantagens do Padrão Abstract Factory
+ Vantagens:
+
+ Flexibilidade: Para adicionar um novo tipo de labirinto (ex.: "Futurista"), basta criar uma nova fábrica, como FabricaLabirintoFuturista, sem alterar o método criarLabirinto.
+ Organização: O código separa a criação de salas e portas da lógica do jogo, deixando tudo mais claro e fácil de manter.
+ Consistência: Garante que os componentes (salas e portas) sejam do mesmo tipo de labirinto (ex.: tudo clássico ou tudo encantado).
+ Reutilização: O mesmo método criarLabirinto pode ser usado para qualquer tipo de labirinto, só mudando a fábrica.
+ Desvantagens:
+
+ Mais classes: O padrão exige criar várias interfaces e classes, o que pode parecer complicado para um projeto pequeno.
+ Mudanças na fábrica: Se precisar adicionar um novo componente (ex.: paredes), é necessário modificar a interface FabricaLabirinto e todas as fábricas concretas.
+ Análise Comparativa
+ Qualidade:
+ Sem Padrão: O código é curto, mas usa condicionais (if-else) para escolher o tipo de labirinto, o que o torna propenso a erros e difícil de expandir.
+ Com Abstract Factory: O código é mais limpo e organizado, com interfaces claras (Sala, Porta, FabricaLabirinto) e nomes em português que facilitam a compreensão.
+ Manutenção:
+ Sem Padrão: Difícil de manter, pois cada novo tipo de labirinto exige mudanças no método criarLabirinto, o que pode introduzir bugs.
+ Com Abstract Factory: Fácil de manter, já que novos tipos de labirintos são adicionados criando novas fábricas, sem alterar o código cliente.
+ Flexibilidade:
+ Sem Padrão: Pouco flexível, porque a lógica está acoplada às condicionais, dificultando a adição de novos tipos.
+ Com Abstract Factory: Muito flexível, pois o método criarLabirinto funciona com qualquer fábrica que implemente FabricaLabirinto.
+ Escalabilidade:
+ Sem Padrão: Não escalável, já que adicionar novos tipos aumenta a complexidade do método criarLabirinto.
+ Com Abstract Factory: Escalável, pois novos tipos de labirintos podem ser adicionados com novas fábricas, mantendo o código organizado.
+
+ Minha Opinião
+ O padrão Abstract Factory é muito útil para esse problema, porque ele permite criar novos tipos de labirintos sem precisar mexer no código principal.
+  Isso é bom para um jogo que pode ganhar novos temas no futuro. O código fica mais organizado, com interfaces que deixam claro o que cada parte faz,
+   A única dificuldade é que, se quiser adicionar algo novo, como paredes,
+   preciso mudar a interface da fábrica, o que exige cuidado. Mesmo assim, acho que o padrão vale a pena, porque deixa o sistema mais preparado para crescer.
+
