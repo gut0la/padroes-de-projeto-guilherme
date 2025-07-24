@@ -1,4 +1,4 @@
-package abstractfactory.semia.compadrao;
+package abstractfactory.semia.sempadrao;
 
 
 public class JogoLabirintoSemPadrao {

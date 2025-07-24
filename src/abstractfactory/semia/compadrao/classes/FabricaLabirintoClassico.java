@@ -1,8 +1,8 @@
-package abstractfactory.semia.sempadrao.classes;
+package abstractfactory.semia.compadrao.classes;
 
-import abstractfactory.semia.sempadrao.interfaces.FabricaLabirinto;
-import abstractfactory.semia.sempadrao.interfaces.Porta;
-import abstractfactory.semia.sempadrao.interfaces.Sala;
+import abstractfactory.semia.compadrao.interfaces.FabricaLabirinto;
+import abstractfactory.semia.compadrao.interfaces.Porta;
+import abstractfactory.semia.compadrao.interfaces.Sala;
 
 public class FabricaLabirintoClassico implements FabricaLabirinto {
 

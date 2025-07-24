@@ -1,6 +1,6 @@
-package abstractfactory.semia.sempadrao.classes;
+package abstractfactory.semia.compadrao.classes;
 
-import abstractfactory.semia.sempadrao.interfaces.Porta;
+import abstractfactory.semia.compadrao.interfaces.Porta;
 
 class PortaClassica implements Porta {
     // método para abrir a porta clássica

@@ -1,4 +1,4 @@
-package abstractfactory.semia.sempadrao.interfaces;
+package abstractfactory.semia.compadrao.interfaces;
 
 public interface FabricaLabirinto {
     // interface para criar os componentes do labirinto

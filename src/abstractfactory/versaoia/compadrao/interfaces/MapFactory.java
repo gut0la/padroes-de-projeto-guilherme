@@ -1,8 +1,8 @@
-package abstractfactory.versaoia.compadrao;
+package abstractfactory.versaoia.compadrao.interfaces;
 
 
 // Interface da fábrica abstrata
-interface MapFactory {
+public interface MapFactory {
     Terrain createTerrain();
     Obstacle createObstacle();
 }

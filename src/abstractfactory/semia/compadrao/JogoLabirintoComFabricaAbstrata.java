@@ -1,10 +1,10 @@
-package abstractfactory.semia.sempadrao;
+package abstractfactory.semia.compadrao;
 
-import abstractfactory.semia.sempadrao.interfaces.FabricaLabirinto;
-import abstractfactory.semia.sempadrao.classes.FabricaLabirintoEncantado;
-import abstractfactory.semia.sempadrao.interfaces.Porta;
-import abstractfactory.semia.sempadrao.interfaces.Sala;
-import abstractfactory.semia.sempadrao.classes.FabricaLabirintoClassico;
+import abstractfactory.semia.compadrao.interfaces.FabricaLabirinto;
+import abstractfactory.semia.compadrao.classes.FabricaLabirintoEncantado;
+import abstractfactory.semia.compadrao.interfaces.Porta;
+import abstractfactory.semia.compadrao.interfaces.Sala;
+import abstractfactory.semia.compadrao.classes.FabricaLabirintoClassico;
 
 public class JogoLabirintoComFabricaAbstrata {
     // método para criar um labirinto usando uma fábrica abstrata
