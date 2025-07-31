@@ -1,0 +1,21 @@
+3.4. Vantagens e Desvantagens do Padrão Singleton
+Vantagens:
+
+Instância única: Garante que apenas um labirinto existe, evitando inconsistências.
+Acesso global: Facilita o acesso ao labirinto por qualquer parte do sistema.
+Controle: Permite reiniciar o labirinto com um novo tipo quando necessário.
+
+Desvantagens:
+
+Acoplamento global: O acesso global pode dificultar testes e manutenção.
+Complexidade em multithreading: Pode requerer sincronização em ambientes concorrentes.
+
+3.5. Análise Comparativa
+
+Qualidade: Sem o padrão, múltiplas instâncias causam confusão. Com Singleton, o controle de uma única instância melhora a consistência.
+Manutenção: Singleton facilita a manutenção ao garantir uma única instância, mas pode complicar testes.
+Flexibilidade: Menos flexível, pois foca em uma única instância.
+Escalabilidade: Limitada em sistemas que precisam de múltiplos labirintos simultâneos.
+
+3.6. Minha Opinião
+O padrão Singleton é perfeito para garantir que o jogo use um único labirinto, mas acho que pode complicar se o sistema precisar de vários labirintos no futuro. Ainda assim, é simples e útil para esse caso.

@@ -1,0 +1,22 @@
+2.4. Vantagens e Desvantagens do Padrão Prototype
+Vantagens:
+
+Eficiência: Clona objetos existentes, evitando criar do zero.
+Flexibilidade: Novos tipos de labirintos são adicionados registrando novos protótipos.
+Reutilização: Protótipos podem ser configurados previamente e reutilizados.
+Independência: O cliente não precisa conhecer as classes concretas.
+
+Desvantagens:
+
+Complexidade de clonagem: Implementar clonagem pode ser complicado para objetos complexos.
+Gerenciamento de protótipos: Requer um gerenciador para armazenar e acessar protótipos.
+
+2.5. Análise Comparativa
+
+Qualidade: Sem o padrão, o código é rígido e acoplado. Com Prototype, a clonagem melhora a eficiência e organização.
+Manutenção: Sem o padrão, novos tipos exigem mudanças no método principal. Com Prototype, basta registrar novos protótipos.
+Flexibilidade: Prototype permite adicionar novos tipos facilmente via gerenciador.
+Escalabilidade: Mais escalável, pois novos protótipos podem ser adicionados sem alterar o código cliente.
+
+2.6. Minha Opinião
+O padrão Prototype é útil para criar labirintos rapidamente clonando modelos prontos. Ele economiza tempo e deixa o código mais flexível, mas acho que gerenciar os protótipos pode ser um pouco confuso no início. Ainda assim, é uma boa escolha para sistemas que precisam criar muitos objetos parecidos.

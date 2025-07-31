@@ -1,0 +1,22 @@
+1.4. Vantagens e Desvantagens do Padrão Builder
+Vantagens:
+
+Separação de construção e representação: O processo de construção é independente da representação final, permitindo criar labirintos diferentes com a mesma lógica.
+Flexibilidade: Novos tipos de labirintos podem ser adicionados criando novos construtores.
+Controle detalhado: O diretor controla o processo passo a passo, facilitando a construção de labirintos complexos.
+Reutilização: O mesmo diretor pode ser usado com diferentes construtores.
+
+Desvantagens:
+
+Mais classes: Requer interfaces e classes adicionais, aumentando a complexidade inicial.
+Dependência do diretor: O processo de construção depende do diretor, que pode limitar variações na sequência de construção.
+
+1.5. Análise Comparativa
+
+Qualidade: Sem o padrão, o código é simples, mas mistura construção e representação, dificultando mudanças. Com Builder, a separação torna o código mais claro e robusto.
+Manutenção: Sem o padrão, adicionar novos tipos exige alterar o método principal. Com Builder, basta criar um novo construtor.
+Flexibilidade: O padrão permite diferentes representações com o mesmo processo de construção.
+Escalabilidade: Builder é mais escalável, pois novos tipos de labirintos são adicionados sem modificar o código existente.
+
+1.6. Minha Opinião
+O padrão Builder é ótimo para esse caso, porque permite criar labirintos complexos sem bagunçar o código. Ele deixa tudo organizado e fácil de expandir, mas exige mais classes, o que pode ser um pouco trabalhoso no início. Ainda assim, acho que vale a pena para projetos que precisam de flexibilidade.

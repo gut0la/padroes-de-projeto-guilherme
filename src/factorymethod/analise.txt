@@ -1,0 +1,32 @@
+4.4. Vantagens e Desvantagens do Padrão Factory Method
+Vantagens:
+
+Flexibilidade: Subclasses decidem quais componentes criar, facilitando a adição de novos tipos.
+Desacoplamento: O cliente não precisa conhecer as classes concretas.
+Reutilização: A lógica de criação é centralizada na classe base.
+
+Desvantagens:
+
+Mais classes: Requer uma hierarquia de classes criadoras.
+Menos consistência: Não garante que todos os componentes sejam da mesma família (diferente do Abstract Factory).
+
+4.5. Análise Comparativa
+
+Qualidade: Sem o padrão, o código é rígido e acoplado. Com Factory Method, a criação é desacoplada e mais organizada.
+Manutenção: Sem o padrão, novos tipos exigem mudanças no método principal. Com Factory Method, basta criar uma nova subclasse.
+Flexibilidade: Factory Method permite adicionar novos tipos facilmente via subclasses.
+Escalabilidade: Escalável, mas menos robusto que Abstract Factory para famílias de objetos.
+
+4.6. Minha Opinião
+O padrão Factory Method é bom para criar componentes de forma flexível, mas acho que pode ser menos organizado que o Abstract Factory quando se trata de garantir que todos os componentes sejam do mesmo tipo. Ainda assim, é mais simples e útil para esse caso.
+
+Relatório Geral
+Minha Opinião Geral
+Cada padrão tem seu ponto forte:
+
+Builder é ideal para construir labirintos complexos passo a passo, com controle detalhado.
+Prototype é eficiente para criar labirintos clonando modelos prontos, mas exige gerenciar protótipos.
+Singleton é perfeito para garantir um único labirinto, mas pode limitar sistemas com múltiplos labirintos.
+Factory Method é simples e flexível para criar componentes, mas menos robusto para famílias de objetos.
+
+Para o problema de labirintos, eu prefiro o Builder ou Abstract Factory (da solução anterior) para projetos maiores, pois oferecem mais controle e consistência. O Prototype é bom para eficiência, e o Singleton é útil para acesso global. O Factory Method é uma boa escolha para simplicidade. Todos os padrões tornam o código mais organizado e fácil de expandir, mas exigem mais classes, o que pode ser um pouco trabalhoso no início.
