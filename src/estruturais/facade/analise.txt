@@ -1,0 +1,22 @@
+1.4. Vantagens e Desvantagens do Padrão Facade
+Vantagens:
+
+Simplicidade: A fachada oferece uma interface simples, escondendo a complexidade dos subsistemas.
+Desacoplamento: O cliente não precisa conhecer os detalhes dos subsistemas, reduzindo o acoplamento.
+Facilidade de uso: Os métodos da fachada são mais intuitivos (ex.: criarLabirintoClassico).
+Manutenção: Alterações nos subsistemas não afetam o cliente, desde que a fachada permaneça consistente.
+
+Desvantagens:
+
+Limitação de flexibilidade: A fachada pode restringir o acesso a funcionalidades específicas dos subsistemas.
+Complexidade adicional: Adicionar a fachada aumenta o número de classes, o que pode ser desnecessário em sistemas simples.
+
+1.5. Análise Comparativa
+
+Qualidade: Sem o padrão, o cliente precisa gerenciar cada subsistema, o que é confuso e propenso a erros. Com Facade, a interface é mais clara e fácil de usar.
+Manutenção: Sem o padrão, mudanças nos subsistemas afetam diretamente o cliente. Com Facade, a manutenção é mais fácil, pois o cliente só interage com a fachada.
+Flexibilidade: Sem o padrão, o cliente tem acesso total, mas com alta complexidade. Com Facade, perde-se alguma flexibilidade em troca de simplicidade.
+Escalabilidade: A fachada facilita adicionar novos tipos de labirintos, mas pode precisar de ajustes para suportar funcionalidades mais complexas.
+
+1.6. Minha Opinião
+O padrão Facade é muito útil para simplificar a interação com os subsistemas do jogo, especialmente para algo complexo como um labirinto com várias partes. Ele torna o código mais fácil de entender e usar, mas pode limitar um pouco se eu precisar de algo muito específico de um subsistema. Ainda assim, acho que é uma boa escolha para manter o código organizado e acessível.

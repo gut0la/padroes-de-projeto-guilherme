@@ -1,0 +1,11 @@
+package criacionais.abstractfactory.versaoia.compadrao.classes;
+
+
+import criacionais.abstractfactory.versaoia.compadrao.interfaces.Obstacle;
+
+class CactusObstacle implements Obstacle {
+    public void display() {
+        System.out.println("Obstáculo: Cacto");
+    }
+}
+
