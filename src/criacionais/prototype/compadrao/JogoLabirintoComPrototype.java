@@ -2,7 +2,6 @@ package criacionais.prototype.compadrao;
 
 
 import criacionais.prototype.compadrao.classes.*;
-import criacionais.prototype.compadrao.compadrao.classes.*;
 import criacionais.prototype.compadrao.interfaces.ComponenteLabirinto;
 
 public class JogoLabirintoComPrototype {

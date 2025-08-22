@@ -1,0 +1,204 @@
+=== ANÁLISE: MEMENTO ===
+
+CONCEITO:
+O padrão Memento permite capturar e externalizar o estado interno de um objeto
+sem violar o encapsulamento, de forma que o objeto possa ser restaurado para
+este estado posteriormente. É também conhecido como Token.
+
+=== COMPARAÇÃO: SEM PADRÃO vs COM PADRÃO ===
+
+SEM PADRÃO (EditorSemMemento.java):
+PROBLEMA - VIOLAÇÃO SRP: Editor gerencia estado E histórico
+PROBLEMA - ACOPLAMENTO FORTE: Lógica de undo/redo misturada com editor
+PROBLEMA - COMPLEXIDADE: Código complexo para gerenciar histórico
+PROBLEMA - MANUTENIBILIDADE: Difícil adicionar novos campos ao estado
+PROBLEMA - ENCAPSULAMENTO: Estado interno exposto através do histórico
+PROBLEMA - FLEXIBILIDADE: Difícil implementar diferentes estratégias de histórico
+PROBLEMA - TESTABILIDADE: Difícil testar lógica de undo/redo isoladamente
+PROBLEMA - DUPLICAÇÃO: Múltiplas listas para cada campo do estado
+PROBLEMA - SINCRONIZAÇÃO: Risco de inconsistência entre listas de estado
+
+COM PADRÃO (EditorComMemento.java):
+VANTAGEM - SEPARAÇÃO DE RESPONSABILIDADES: Cada classe tem uma função específica
+VANTAGEM - ENCAPSULAMENTO: Estado protegido dentro do memento
+VANTAGEM - FLEXIBILIDADE: Múltiplos editores e históricos independentes
+VANTAGEM - ROBUSTEZ: Implementação confiável de undo/redo
+VANTAGEM - EXTENSIBILIDADE: Fácil adicionar novos campos ao estado
+VANTAGEM - REUTILIZAÇÃO: Componentes podem ser reutilizados
+VANTAGEM - TESTABILIDADE: Cada componente testável isoladamente
+VANTAGEM - CONTROLE DE MEMÓRIA: Limite configurável de histórico
+VANTAGEM - NAVEGAÇÃO: Acesso a qualquer ponto do histórico
+VANTAGEM - TRANSFERÊNCIA: Estados podem ser copiados entre objetos
+
+=== ESTRUTURA DO PADRÃO ===
+
+1. Memento (Interface):
+   - Define contrato para armazenamento de estado
+   - Interface marcadora (sem métodos públicos)
+   - Garante encapsulamento do estado
+
+2. Memento Concreto:
+   - EditorMemento: Armazena estado específico do Editor
+   - Campos imutáveis após criação
+   - Métodos package-private para acesso ao estado
+   - Apenas o Originator pode acessar o estado
+
+3. Originator (Originador):
+   - Editor: Objeto cujo estado precisa ser salvo
+   - Cria mementos com seu estado atual
+   - Restaura estado a partir de mementos
+   - Foca na lógica de negócio
+
+4. Caretaker (Zelador):
+   - HistoricoEditor: Gerencia coleção de mementos
+   - Implementa undo/redo
+   - Não acessa conteúdo dos mementos
+   - Controla limite de histórico
+
+=== VANTAGENS DO PADRÃO ===
+
+VANTAGEM - ENCAPSULAMENTO:
+- Estado interno protegido
+- Memento opaco para outros objetos
+- Acesso controlado ao estado
+
+VANTAGEM - SEPARAÇÃO DE RESPONSABILIDADES:
+- Originator: lógica de negócio
+- Caretaker: gerenciamento de histórico
+- Memento: armazenamento de estado
+
+VANTAGEM - FLEXIBILIDADE:
+- Múltiplos originators independentes
+- Diferentes estratégias de histórico
+- Navegação livre no histórico
+
+VANTAGEM - ROBUSTEZ:
+- Implementação confiável de undo/redo
+- Controle de limite de memória
+- Tratamento de estados inválidos
+
+VANTAGEM - EXTENSIBILIDADE:
+- Fácil adicionar campos ao estado
+- Novos tipos de memento
+- Diferentes políticas de armazenamento
+
+VANTAGEM - REUTILIZAÇÃO:
+- Caretaker reutilizável
+- Mementos transferíveis
+- Componentes independentes
+
+VANTAGEM - TESTABILIDADE:
+- Cada componente testável isoladamente
+- Mock objects facilitados
+- Testes de estado determinísticos
+
+=== DESVANTAGENS DO PADRÃO ===
+
+DESVANTAGEM - OVERHEAD DE MEMÓRIA:
+- Múltiplas cópias do estado
+- Crescimento do histórico
+- Objetos imutáveis custosos
+
+DESVANTAGEM - COMPLEXIDADE INICIAL:
+- Mais classes para gerenciar
+- Estrutura mais complexa
+- Curva de aprendizado
+
+DESVANTAGEM - PERFORMANCE:
+- Criação frequente de objetos
+- Cópia de estado custosa
+- Garbage collection impactado
+
+DESVANTAGEM - LIMITAÇÕES DE ENCAPSULAMENTO:
+- Acesso package-private necessário
+- Dependência entre Originator e Memento
+- Possível quebra de encapsulamento
+
+=== QUANDO USAR ===
+
+RECOMENDADO - NECESSÁRIO:
+- Implementar funcionalidades de undo/redo
+- Salvar snapshots de estado
+- Implementar checkpoints em sistemas
+- Criar funcionalidades de rollback
+- Implementar versionamento de objetos
+- Sistemas que precisam de auditoria de estado
+
+NÃO RECOMENDADO - DESNECESSÁRIO:
+- Estados simples e pequenos
+- Sem necessidade de histórico
+- Sistemas com restrições severas de memória
+- Estados que mudam muito frequentemente
+- Objetos com estado muito grande
+
+=== EXEMPLO PRÁTICO ===
+
+Editor de Texto:
+- Originator: Editor (conteúdo, fonte, tamanho)
+- Memento: EditorMemento (estado imutável)
+- Caretaker: HistoricoEditor (gerencia undo/redo)
+
+Fluxo:
+1. Editor cria memento com estado atual
+2. HistoricoEditor armazena memento
+3. Editor modifica seu estado
+4. Para undo: HistoricoEditor retorna memento anterior
+5. Editor restaura estado do memento
+
+=== VARIAÇÕES DO PADRÃO ===
+
+1. Memento Simples:
+   - Interface marcadora
+   - Implementação mostrada no exemplo
+
+2. Memento com Métodos Públicos:
+   - Expõe alguns métodos para consulta
+   - Mantém estado protegido
+
+3. Memento Incremental:
+   - Armazena apenas mudanças
+   - Otimização de memória
+
+4. Memento Comprimido:
+   - Compressão do estado
+   - Para estados grandes
+
+5. Memento Persistente:
+   - Salva estado em disco
+   - Para históricos longos
+
+=== RELAÇÃO COM OUTROS PADRÕES ===
+
+1. Command:
+   - Memento armazena estado, Command armazena operações
+   - Podem ser combinados para undo/redo robusto
+   - Command pode usar Memento para rollback
+
+2. Iterator:
+   - Caretaker pode usar Iterator para navegar histórico
+   - Ambos encapsulam acesso a coleções
+
+3. Prototype:
+   - Memento pode usar clonagem para criar snapshots
+   - Ambos lidam com cópia de objetos
+
+4. Observer:
+   - Originator pode notificar mudanças de estado
+   - Caretaker pode observar Originator
+
+=== IMPLEMENTAÇÃO EM JAVA ===
+
+Considerações Específicas:
+- Usar modificadores package-private
+- Implementar equals() e hashCode() em Memento
+- Considerar Serializable para persistência
+- Usar generics para type safety
+- Implementar toString() para debugging
+
+=== CONCLUSÃO ===
+
+O padrão Memento é essencial quando você precisa implementar funcionalidades
+de undo/redo ou salvar snapshots de estado mantendo o encapsulamento.
+Ele separa claramente as responsabilidades e oferece uma solução robusta
+para gerenciamento de histórico, mas deve ser usado com cuidado em relação
+ao consumo de memória e performance.

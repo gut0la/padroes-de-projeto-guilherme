@@ -1,0 +1,159 @@
+=== ANÁLISE: MEDIATOR ===
+
+CONCEITO:
+O padrão Mediator define como um conjunto de objetos interage entre si.
+Ele promove o acoplamento fraco ao evitar que objetos se refiram uns aos outros
+explicitamente, e permite variar suas interações independentemente.
+
+=== COMPARAÇÃO: SEM PADRÃO vs COM PADRÃO ===
+
+SEM PADRÃO (ChatSemMediator.java):
+PROBLEMA - ACOPLAMENTO FORTE: Cada usuário conhece todos os outros
+PROBLEMA - RESPONSABILIDADES MISTURADAS: Usuario gerencia comunicação e contatos
+PROBLEMA - COMPLEXIDADE CRESCENTE: N*(N-1) relacionamentos entre N usuários
+PROBLEMA - DIFICULDADE DE EXTENSÃO: Novos tipos de mensagem requerem modificar Usuario
+PROBLEMA - DUPLICAÇÃO DE LÓGICA: Código de envio repetido em vários lugares
+PROBLEMA - DIFICULDADE DE TESTE: Precisa criar todos os usuários para testar
+
+COM PADRÃO (ChatComMediator.java):
+VANTAGEM - DESACOPLAMENTO: Usuários só conhecem o mediator
+VANTAGEM - CENTRALIZAÇÃO: Lógica de comunicação em um só lugar
+VANTAGEM - EXTENSIBILIDADE: Novas funcionalidades sem modificar usuários
+VANTAGEM - REUTILIZAÇÃO: Mediator pode ser usado por diferentes usuários
+VANTAGEM - CONTROLE: Mediator implementa regras de negócio
+VANTAGEM - FLEXIBILIDADE: Múltiplos mediators podem coexistir
+VANTAGEM - SINGLE RESPONSIBILITY: Cada classe tem uma responsabilidade
+
+=== ESTRUTURA DO PADRÃO ===
+
+1. Mediator (Interface):
+   - ChatMediator: Define contrato para comunicação
+   - Métodos: adicionarUsuario(), enviarMensagem(), etc.
+
+2. Mediator Concreto:
+   - ChatRoom: Implementa lógica de comunicação
+   - Gerencia lista de usuários
+   - Centraliza regras de negócio
+
+3. Colleague (Participante):
+   - Usuario: Participa da comunicação através do mediator
+   - Não conhece outros usuários diretamente
+   - Delega comunicação ao mediator
+
+4. Cliente:
+   - ChatComMediator: Configura mediator e usuários
+   - Demonstra uso do padrão
+
+=== VANTAGENS DO PADRÃO ===
+
+VANTAGEM - DESACOPLAMENTO:
+- Objetos não se referenciam diretamente
+- Reduz dependências entre componentes
+- Facilita manutenção e evolução
+
+VANTAGEM - CENTRALIZAÇÃO:
+- Lógica de interação em um só lugar
+- Facilita implementação de regras complexas
+- Controle centralizado de comunicação
+
+VANTAGEM - REUTILIZAÇÃO:
+- Mediator pode ser reutilizado com diferentes objetos
+- Comportamentos podem ser compartilhados
+- Reduz duplicação de código
+
+VANTAGEM - EXTENSIBILIDADE:
+- Novas funcionalidades sem modificar participantes
+- Fácil adicionar novos tipos de interação
+- Princípio Open/Closed respeitado
+
+VANTAGEM - CONTROLE:
+- Mediator pode implementar regras de negócio
+- Validações centralizadas
+- Logging e auditoria facilitados
+
+VANTAGEM - FLEXIBILIDADE:
+- Múltiplos mediators podem coexistir
+- Diferentes estratégias de comunicação
+- Fácil trocar comportamentos
+
+=== DESVANTAGENS DO PADRÃO ===
+
+DESVANTAGEM - COMPLEXIDADE DO MEDIATOR:
+- Mediator pode se tornar muito complexo
+- Concentração de lógica em uma classe
+- Pode violar Single Responsibility se não bem projetado
+
+DESVANTAGEM - PONTO ÚNICO DE FALHA:
+- Mediator centraliza comunicação
+- Falha no mediator afeta todo o sistema
+- Pode se tornar gargalo de performance
+
+DESVANTAGEM - OVERHEAD:
+- Chamadas indiretas através do mediator
+- Pode impactar performance em sistemas críticos
+- Mais objetos na memória
+
+=== QUANDO USAR ===
+
+RECOMENDADO - NECESSÁRIO:
+- Múltiplos objetos se comunicam de forma complexa
+- Acoplamento forte entre objetos é problemático
+- Lógica de interação precisa ser centralizada
+- Diferentes estratégias de comunicação são necessárias
+- Sistema precisa de controle centralizado
+
+NÃO RECOMENDADO - DESNECESSÁRIO:
+- Comunicação simples entre poucos objetos
+- Relacionamentos são estáveis e bem definidos
+- Performance é extremamente crítica
+- Overhead de indireção não é justificado
+
+=== EXEMPLO PRÁTICO ===
+
+Sistema de Chat:
+- Usuários: João, Maria, Pedro
+- Mediator: ChatRoom
+- Comunicação: Mensagens públicas e privadas
+- Funcionalidades: Anúncios, lista de usuários
+
+Fluxo:
+1. Usuários são adicionados ao ChatRoom
+2. Usuario.enviarMensagem() chama ChatRoom.enviarMensagem()
+3. ChatRoom distribui mensagem para outros usuários
+4. Usuários recebem mensagem através do ChatRoom
+5. ChatRoom pode implementar regras (filtros, logs, etc.)
+
+=== VARIAÇÕES DO PADRÃO ===
+
+1. Mediator Simples:
+   - Interface básica para comunicação
+   - Implementação mostrada no exemplo
+
+2. Mediator com Observer:
+   - Combina com padrão Observer
+   - Notificações automáticas de mudanças
+
+3. Mediator Hierárquico:
+   - Múltiplos níveis de mediators
+   - Delegação entre mediators
+
+=== RELAÇÃO COM OUTROS PADRÕES ===
+
+1. Observer:
+   - Mediator pode usar Observer para notificações
+   - Observer é mais específico para mudanças de estado
+
+2. Command:
+   - Mediator pode usar Command para encapsular operações
+   - Command foca em encapsular requisições
+
+3. Facade:
+   - Ambos fornecem interface simplificada
+   - Facade é unidirecional, Mediator é bidirecional
+
+=== CONCLUSÃO ===
+
+O padrão Mediator é ideal quando você tem um conjunto complexo de objetos
+que precisam se comunicar, mas você quer evitar acoplamento forte entre eles.
+Ele centraliza a lógica de interação, facilitando manutenção e extensão,
+mas pode criar um ponto único de complexidade se não for bem projetado.
